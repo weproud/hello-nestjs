@@ -1,4 +1,4 @@
 import { Controller } from '@nestjs/common';
 
-@Controller('llama')
+@Controller('api/v1/llama')
 export class LlamaController {}
