@@ -1,5 +1,6 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { GuardModule } from './api/v1/guard/guard.module';
 import { HelloModule } from './api/v1/hello/hello.module';
 import { LlamaModule } from './api/v1/llama/llama.module';
 import { UserModule } from './api/v1/user/user.module';
@@ -20,6 +21,7 @@ import { validation } from './utils/validation';
     HelloModule,
     LlamaModule,
     UserModule,
+    GuardModule,
   ],
   controllers: [AppController],
   providers: [AppService],

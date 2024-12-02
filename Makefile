@@ -13,7 +13,7 @@ nest-gs:
 nest-gmi:
 	 nest generate middleware ${NAME} 
 
-nest-gt: nest-gm nest-gc nest-gs
+nest-gd: nest-gm nest-gc nest-gs
 
 
 # prisma
