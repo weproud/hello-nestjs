@@ -4,7 +4,7 @@ import { HelloResponse } from './dto/hello.response';
 import { HelloService } from './hello.service';
 
 @ApiTags('Hello API')
-@Controller('api/v1/hello')
+@Controller('api/v1/hellos')
 export class HelloController {
   constructor(private readonly helloService: HelloService) {}
 

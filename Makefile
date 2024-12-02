@@ -1,15 +1,33 @@
 NAME=nest
 
-ngm:
+# nest
+nest-gm:
 	 nest generate module ${NAME}
 
-ngc:
+nest-gc:
 	 nest generate controller ${NAME} 
 
-ngs:
+nest-gs:
 	 nest generate service ${NAME} 
 
-ngmi:
+nest-gmi:
 	 nest generate middleware ${NAME} 
 
-ngt: ngm ngc ngs
+nest-gt: nest-gm nest-gc nest-gs
+
+
+# prisma
+prisma-status:
+	npx prisma status
+prisma-pull:
+	npx prisma db pull
+prisma-generate:
+	npx prisma generate
+prisma-push:
+	npx prisma db push
+prisma-migrate:
+	npx prisma migrate dev --name ${PRISMA_MIGRATION_NAME}
+prisma-diff:
+	npx prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --script
+prisma-manually-migrate:
+	npx prisma migrate deploy

@@ -2,6 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HelloModule } from './api/v1/hello/hello.module';
 import { LlamaModule } from './api/v1/llama/llama.module';
+import { UserModule } from './api/v1/user/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import configuration from './config/configuration';
@@ -16,8 +17,9 @@ import { validation } from './utils/validation';
       validationSchema: validation,
       cache: true,
     }),
-    LlamaModule,
     HelloModule,
+    LlamaModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
