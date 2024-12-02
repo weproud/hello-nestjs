@@ -1,6 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
+import {
+  utilities as nestWinstonModuleUtilities,
+  WinstonModule,
+} from 'nest-winston';
+import * as winston from 'winston';
 import { GuardModule } from './api/v1/guard/guard.module';
 import { HelloModule } from './api/v1/hello/hello.module';
 import { LlamaModule } from './api/v1/llama/llama.module';
@@ -21,6 +26,20 @@ import { validation } from './utils/validation';
       cache: true,
     }),
     ScheduleModule.forRoot(),
+    WinstonModule.forRoot({
+      transports: [
+        new winston.transports.Console({
+          level: process.env.NODE_ENV === 'production' ? 'info' : 'silly',
+          format: winston.format.combine(
+            winston.format.colorize(),
+            winston.format.timestamp(),
+            nestWinstonModuleUtilities.format.nestLike('hello-nestjs', {
+              prettyPrint: true,
+            }),
+          ),
+        }),
+      ],
+    }),
     HelloModule,
     LlamaModule,
     UserModule,
