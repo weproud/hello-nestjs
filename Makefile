@@ -9,4 +9,7 @@ ngc:
 ngs:
 	 nest generate service ${NAME} 
 
+ngmi:
+	 nest generate middleware ${NAME} 
+
 ngt: ngm ngc ngs
