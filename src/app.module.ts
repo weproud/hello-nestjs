@@ -8,11 +8,11 @@ import {
 import * as winston from 'winston';
 import { GuardModule } from './api/v1/guard/guard.module';
 import { HelloModule } from './api/v1/hello/hello.module';
-import { LlamaModule } from './api/v1/llama/llama.module';
+import { OllamaModule } from './api/v1/ollama/ollama.module';
 import { UserModule } from './api/v1/user/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { BatchService } from './batch/batch.service';
+import { BatchModule } from './batch/batch.module';
 import configuration from './config/configuration';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { validation } from './utils/validation';
@@ -20,6 +20,7 @@ import { validation } from './utils/validation';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: `.${process.env.NODE_ENV}.env`,
       load: [configuration],
       isGlobal: true,
       validationSchema: validation,
@@ -40,13 +41,14 @@ import { validation } from './utils/validation';
         }),
       ],
     }),
+    BatchModule,
     HelloModule,
-    LlamaModule,
     UserModule,
     GuardModule,
+    OllamaModule,
   ],
   controllers: [AppController],
-  providers: [AppService, BatchService],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

@@ -1,0 +1,15 @@
+@nestUrl = http://127.0.0.1:8000
+@baseUrl = http://localhost:3001
+
+### Hello test
+GET {{baseUrl}}/api/v1/hellos
+Content-Type: application/json
+
+
+### Ollam test
+POST {{baseUrl}}/api/v1/ollama
+Content-Type: application/json
+
+{
+    "prompt": "꿈을 클라우드에 저장한다면 어떤 일이 벌어질까?"
+}
