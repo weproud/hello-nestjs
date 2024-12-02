@@ -7,13 +7,13 @@ export class GuardController {
   constructor(private readonly guardService: GuardService) {}
 
   @Get('/anonymous')
-  async getAnonymous(): Promise<string> {
-    return await this.guardService.anonymous();
+  getAnonymous(): Promise<string> {
+    return this.guardService.anonymous();
   }
 
   @UseGuards(AuthGuard)
   @Get('/auth')
-  async getAuth(): Promise<string> {
-    return await this.guardService.auth();
+  getAuth(): Promise<string> {
+    return this.guardService.auth();
   }
 }
