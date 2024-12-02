@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class GuardService {
-  async anomymous(): Promise<string> {
-    return 'Anomymous';
+  async anonymous(): Promise<string> {
+    return 'Anonymous';
   }
 
   async auth(): Promise<string> {

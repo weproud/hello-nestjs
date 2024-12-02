@@ -8,7 +8,7 @@ export class GuardController {
 
   @Get('/anonymous')
   async getAnonymous(): Promise<string> {
-    return await this.guardService.anomymous();
+    return await this.guardService.anonymous();
   }
 
   @UseGuards(AuthGuard)
