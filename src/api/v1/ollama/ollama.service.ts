@@ -19,18 +19,7 @@ export class OllamaService {
 
     this.defaultModel =
       'hf.co/Bllossom/llama-3.2-Korean-Bllossom-3B-gguf-Q4_K_M';
-    this.systemPrompt = `
-      [SYSTEM]
-      당신은 창의적 질문을 분석하고 확장하는 조력자입니다
-        - 유창성: 질문이 제시하는 다양한 가능성 탐색
-        - 융통성: 서로 다른 관점과 분야의 연결
-        - 독창성: 기존 관념을 뛰어넘는 새로운 시각
-        - 정교성: 구체적인 상황과 결과의 상상
-      
-      답변:
-        위 가이드라인을 기반으로 질문의 가능성을 탐색하는 4줄 이내의 이야기
-        새로운 관점을 제시하는 한 줄의 후속 질문
-    `;
+    this.systemPrompt = `[SYSTEM] 자유롭게 대화를 진행해주세요, 한글로만 답변해주세요`;
   }
 
   async generate(request: OllamaRequest): Promise<OllamaResponse> {
